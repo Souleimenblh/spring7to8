@@ -7,11 +7,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.souleimen.avions.entities.Avion;
+import com.souleimen.avions.entities.TypeAv;
 import com.souleimen.avions.repos.AvionRepository;
 
 @Service
-public class AvionServiceImpl implements AvionService {
 
+public class AvionServiceImpl implements AvionService {
 	@Autowired
 	AvionRepository avionRepository;
 
@@ -54,4 +55,39 @@ public class AvionServiceImpl implements AvionService {
 
 	}
 
+	@Override
+	public List<Avion> findByMatriculeAvion(String matriculeAvion) {
+		
+		return avionRepository.findByMatriculeAvion(matriculeAvion);
+	}
+
+	@Override
+	public List<Avion> findByMatriculeAvionContains(String matriculeAvion) {
+
+		return avionRepository.findByMatriculeAvionContains(matriculeAvion);
+	}
+
+	
+	  @Override public List<Avion> findByfindByMatriculeCelometrage(String
+	  matriculeAvion, int celometrageAvion) { return
+	  avionRepository.findByMatriculeCelometrage(matriculeAvion, celometrageAvion);
+	  }
+	  
+	  @Override public List<Avion> findByTypeAv(TypeAv typeAv) { return
+	  avionRepository.findByTypeAv(typeAv); }
+	  
+	  @Override public List<Avion> findByTypeAvIdA(Long id) {
+	  
+	  return avionRepository.findByTypeAvIdAv(id); }
+	  
+	  @Override public List<Avion> findByOrderByMatriculeAvAsc() {
+	  
+	  return avionRepository.findByOrderByMatriculeAvionAsc(); }
+	  
+	  @Override public List<Avion> trierAvionsMatriculeCelometrage() { return
+	  avionRepository.trierAvionsMatriculeCelometrage(); }
+	 
+
+	
+	
 }

@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Avion {
@@ -16,6 +17,8 @@ public class Avion {
 	private int celometrageAvion;
 	private Date dateFabrication;
 	
+	@ManyToOne
+	private TypeAv typeAv;
 	
 	public Avion() {
 		super();
@@ -58,6 +61,14 @@ public class Avion {
 	public String toString() {
 		return "Avion [idAvion=" + idAvion + ", matriculeAvion=" + matriculeAvion + ", celometrageAvion="
 				+ celometrageAvion + ", dateFabrication=" + dateFabrication + "]";
+	}
+
+	public TypeAv getTypeAv() {
+		return typeAv;
+	}
+
+	public void setTypeAv(TypeAv typeAv) {
+		this.typeAv = typeAv;
 	}
 	
 	

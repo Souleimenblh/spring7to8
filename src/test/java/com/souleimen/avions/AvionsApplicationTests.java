@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 
 import com.souleimen.avions.entities.Avion;
+import com.souleimen.avions.entities.TypeAv;
 import com.souleimen.avions.repos.AvionRepository;
 import com.souleimen.avions.service.AvionService;
 
@@ -73,5 +74,51 @@ class AvionsApplicationTests {
 	 {
 	 System.out.println(a);
 	 } */
-	 }
+	 }	
+		@Test
+		public void testFindAvionByMatricule()
+		{
+		List<Avion> avios = AvionRepository.findByMatriculeAvion("boeing1"); 
+		for (Avion a : avios)
+		{
+		System.out.println(a);
+		}
+		}
+
+
+		@Test
+		public void testFindAvionByMatriculeContains()
+		{
+		List<Avion> avios = AvionRepository.findByMatriculeAvionContains("b");
+		for (Avion a : avios)
+		{
+		System.out.println(a);
+		}
+		} 
+
+		
+		  @Test public void findByMatriculeCelometrage() { List<Avion> avios =
+		  AvionRepository.findByMatriculeCelometrage("Boeing233", 2000); for (Avion a :
+		  avios) { System.out.println(a); } }
+		  
+		  
+		  
+		  @Test public void testfindByTypeAv() { TypeAv cat = new TypeAv();
+		  cat.setIdAv(1L); List<Avion> avios = AvionRepository.findByTypeAv(cat); for
+		  (Avion a : avios) { System.out.println(a); } }
+		  
+		  
+		  @Test public void findByTypeAvIdAv() { List<Avion> avios =
+		  AvionRepository.findByTypeAvIdAv(1L); for (Avion a : avios) {
+		  System.out.println(a); } }
+		  
+		  @Test public void testfindByOrderByMatriculeAvAsc() { List<Avion> avios =
+		  AvionRepository.findByOrderByMatriculeAvionAsc(); for (Avion a : avios) {
+		  System.out.println(a); } }
+		  
+		  @Test public void testrierAvionsMatriculeCelometrage() { List<Avion> avios =
+		  AvionRepository.trierAvionsMatriculeCelometrage(); for (Avion a : avios) {
+		  System.out.println(a); } }
+		 
 }
+
