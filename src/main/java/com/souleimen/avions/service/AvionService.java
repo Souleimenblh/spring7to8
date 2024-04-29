@@ -26,5 +26,7 @@ List<Avion> trierAvionsMatriculeCelometrage();
 
 Page<Avion> getAllAvionsParPage(int page, int size);
 
+List<TypeAv> getAllTypeAvs();
+
 
 }

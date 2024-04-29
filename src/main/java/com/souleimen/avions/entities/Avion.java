@@ -2,19 +2,39 @@ package com.souleimen.avions.entities;
 
 
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Past;
 
 @Entity
 public class Avion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idAvion;
+	
+	@NotNull
+	@Size (min = 5,max = 50)
 	private String matriculeAvion;
+	
+	@Min(value = 1000)
+	@Max(value = 1000000000)
 	private int celometrageAvion;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Past
 	private Date dateFabrication;
 	
 	@ManyToOne

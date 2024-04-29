@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 import com.souleimen.avions.entities.Avion;
 import com.souleimen.avions.entities.TypeAv;
 import com.souleimen.avions.repos.AvionRepository;
+import com.souleimen.avions.repos.TypeAvRepository;
 
 @Service
 
 public class AvionServiceImpl implements AvionService {
 	@Autowired
 	AvionRepository avionRepository;
+	
+	@Autowired
+	TypeAvRepository typeAvRepository;
 
 	@Override
 	public Avion saveAvion(Avion a) {
@@ -86,8 +90,11 @@ public class AvionServiceImpl implements AvionService {
 	  
 	  @Override public List<Avion> trierAvionsMatriculeCelometrage() { return
 	  avionRepository.trierAvionsMatriculeCelometrage(); }
-	 
 
-	
+	@Override
+	public List<TypeAv> getAllTypeAvs() {
+		return typeAvRepository.findAll();
+
+	}
 	
 }
